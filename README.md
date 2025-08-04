@@ -1,9 +1,11 @@
 # TeleCasino Slots Game
 
+[![Build and Test SlotsGameService](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/test-slots-api.yml/badge.svg)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/test-slots-api.yml)
+[![🚀 Publish TeleCasino.KenoGameService (linux-x64)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/docker-image.yml/badge.svg)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/docker-image.yml)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/repasscloud/TeleCasino.SlotsGameService?label=version)
+
 A command-line Slots game animation and result generator built with .NET.  
 Players place a wager and receive an animated video of the slot machine spin, plus a JSON summary of the result.
-
----
 
 ## Features
 
@@ -15,8 +17,6 @@ Players place a wager and receive an animated video of the slot machine spin, pl
 - **JSON output**: Detailed result including wager, reels outcome, payout, net gain, video file.
 
 - **Cryptographic RNG**: All spins use secure cryptographic randomness for fair results.
-
----
 
 ## Installation
 
@@ -32,8 +32,6 @@ Players place a wager and receive an animated video of the slot machine spin, pl
 
 4. Place your symbol images (`cherry.png`, `bar.png`, `seven.png`, etc.) in the `images/` directory.
 
----
-
 ## Build & Publish
 
 ```bash
@@ -46,8 +44,6 @@ dotnet publish -c Release
 # The single-file, self-contained binary will be in:
 #   bin/Release/net9.0/<RID>/publish/TeleCasino.SlotsGame
 ```
-
----
 
 ## Usage
 
@@ -81,8 +77,6 @@ TeleCasino.SlotsGame 1.0 221 --json
 }
 ```
 
----
-
 ## Rules & Parameters
 
 - **3-reel slot machine** with weighted symbol rarity.  
@@ -93,8 +87,6 @@ TeleCasino.SlotsGame 1.0 221 --json
   - Rare → 50× wager  
   - Jackpot → 100× wager  
 - **No matching symbols** = loss.  
-
----
 
 ## License
 
