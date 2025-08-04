@@ -1,7 +1,7 @@
 # TeleCasino Slots Game
 
-[![Build and Test SlotsGameService](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/test-slots-api.yml/badge.svg)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/test-slots-api.yml)
-[![🚀 Publish TeleCasino.KenoGameService (linux-x64)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/docker-image.yml/badge.svg)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/docker-image.yml)
+[![🧪 Test API in Docker](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/test-api.yml/badge.svg)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/test-api.yml)
+[![🚀 Publish Docker Container (linux-x64)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/docker-image.yml/badge.svg)](https://github.com/repasscloud/TeleCasino.SlotsGameService/actions/workflows/docker-image.yml)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/repasscloud/TeleCasino.SlotsGameService?label=version)
 
 A command-line Slots game animation and result generator built with .NET.  
