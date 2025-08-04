@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace TeleCasino.KenoGameService.Controllers
+namespace TeleCasino.SlotsGameService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

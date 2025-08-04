@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TeleCasino.SlotsGameService.Models;
 using TeleCasino.SlotsGameService.Services.Interface;
 
-namespace TeleCasino.SlotsGameApi.Controllers
+namespace TeleCasino.SlotsGameService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
