@@ -56,7 +56,12 @@ jobs:
     name: 📝 Create GitHub Release
     runs-on: ubuntu-latest
     needs: merge-manifest
+    permissions:
+      contents: write
     steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
       - name: 📦 Publish GitHub Release
         uses: softprops/action-gh-release@v1
         with:
