@@ -218,7 +218,11 @@ public class SlotsGameService : ISlotsGameService
         var ffArgs = $"-y -framerate 10 -i {framesDir}/frame_%03d.png " +
                      "-c:v libx264 -preset fast -pix_fmt yuv420p " +
                      "-movflags +faststart " +
+                     "-tune stillimage " +
+                     "-shortest " +
+                     "-an " +
                      outputVideo;
+
         var ffmpegPath = Environment.GetEnvironmentVariable("FFMPEG_PATH") ?? "ffmpeg";
         var psi = new ProcessStartInfo(ffmpegPath, ffArgs)
         {
