@@ -50,7 +50,7 @@ public class SlotsGameService : ISlotsGameService
 
         // video generation
         await RenderAnimationAsync(assets, reels, framesDir);
-        RunFfmpeg(framesDir, videoFile);
+        RunFfmpeg(framesDir, videoFile, soundFile);
 
         // move video file to public access url
         if (File.Exists(videoFile))
@@ -216,7 +216,7 @@ public class SlotsGameService : ISlotsGameService
         await ms.CopyToAsync(fs);
     }
 
-    private static void RunFfmpeg(string framesDir, string outputVideo)
+    private static void RunFfmpeg(string framesDir, string outputVideo, string soundFile)
     {
         var ffArgs = $"-y -framerate 10 -i {framesDir}/frame_%03d.png " +
                      $"-i {soundFile} " +
