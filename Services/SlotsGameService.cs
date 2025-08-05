@@ -220,6 +220,8 @@ public class SlotsGameService : ISlotsGameService
     {
         var ffArgs = $"-y -framerate 10 -i {framesDir}/frame_%03d.png " +
                      $"-i {soundFile} " +
+                     "-filter_complex \"[0:v]tpad=stop_mode=clone:stop_duration=3[v]\" " + // Adds 3s extra hold
+                     "-map \"[v]\" -map 1:a " +
                      "-shortest " +
                      "-r 30 " +
                      "-c:v libx264 -preset fast -pix_fmt yuv420p " +
