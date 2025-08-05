@@ -36,8 +36,9 @@ RUN apt update && apt -y install --no-install-recommends \
 
 COPY --from=build /app/publish .
 
-RUN mkdir -p /shared/Slots/images
+RUN mkdir -p /shared/Slots/images && mkdir -p /shared/Slots/sounds
 COPY Assets/SlotsImages/* /shared/Slots/images/
+COPY Assets/SlotsSounds/* /shared/Slots/sounds/
 
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=0
 ENV DOTNET_EnableDiagnostics=0

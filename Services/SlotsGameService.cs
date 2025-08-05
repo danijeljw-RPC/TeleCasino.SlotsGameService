@@ -18,6 +18,7 @@ public class SlotsGameService : ISlotsGameService
     private static readonly string _framesSubDir = "frames";
     private static readonly string _videosSubDir = "videos";
     private static readonly string _imagesSubDir = "images";
+    private static readonly string _soundsSubDir = "sounds";
 
     public SlotsGameService(IConfiguration config)
     {
@@ -33,6 +34,7 @@ public class SlotsGameService : ISlotsGameService
         var videoFile = Path.Combine(videoDir, $"{slotsResultId}.mp4");
         var framesDir = Path.Combine(slotsSharedRootPath, slotsResultId, _framesSubDir);
         var imagesDir = Path.Combine(slotsSharedRootPath, _imagesSubDir);
+        var soundsDir = Path.Combine(slotsSharedRootPath, _soundsSubDir);
 
         PrepareDirectory(framesDir);
         DeleteThisFile(videoFile);
@@ -40,6 +42,7 @@ public class SlotsGameService : ISlotsGameService
 
         // load assets
         var assets = LoadBitmaps(imagesDir);
+        var soundFile = Path.Combine(soundsDir, "Ij76x_px8jo.mp3");
 
         // spin and payout
         var (reels, payout) = Spin(wager);
@@ -216,11 +219,13 @@ public class SlotsGameService : ISlotsGameService
     private static void RunFfmpeg(string framesDir, string outputVideo)
     {
         var ffArgs = $"-y -framerate 10 -i {framesDir}/frame_%03d.png " +
-                     "-c:v libx264 -preset fast -pix_fmt yuv420p " +
-                     "-movflags +faststart " +
-                     "-tune stillimage " +
+                     $"-i {soundFile} " +
                      "-shortest " +
-                     "-an " +
+                     "-r 30 " +
+                     "-c:v libx264 -preset fast -pix_fmt yuv420p " +
+                     "-c:a aac -b:a 128k " +
+                     "-movflags +faststart " +
+                     "-f mp4 " +
                      outputVideo;
 
         var ffmpegPath = Environment.GetEnvironmentVariable("FFMPEG_PATH") ?? "ffmpeg";
