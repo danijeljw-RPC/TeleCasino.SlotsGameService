@@ -74,4 +74,4 @@ jobs:
         run: |
           gh pr merge ${{ steps.cpr.outputs.pr_number }} --merge
         env:
-          GITHUB_TOKEN: ${{ secrets.ENW_PAT }}
+          GITHUB_TOKEN: ${{ secrets.NEW_PAT }}
