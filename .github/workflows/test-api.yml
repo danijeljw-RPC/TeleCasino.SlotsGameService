@@ -64,7 +64,7 @@ jobs:
         with:
           source_branch: "dev"
           destination_branch: "main"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}
           pr_title: "🔀 Merge dev → main"
           pr_body: "Automated PR to merge dev into main after successful tests."
           pr_label: "auto-merge"
@@ -72,6 +72,6 @@ jobs:
       - name: ✅ Merge Pull Request
         if: steps.cpr.outputs.pr_number != ''
         run: |
-          gh pr merge ${{ steps.cpr.outputs.pr_number }} --merge --admin
+          gh pr merge ${{ steps.cpr.outputs.pr_number }} --merge
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
