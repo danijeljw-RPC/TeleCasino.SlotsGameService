@@ -221,7 +221,7 @@ public class SlotsGameService : ISlotsGameService
         // animation details
         const int fps = 10;
         const int frames = FrameCount;
-        const int minVideoLength = 5;
+        const int minVideoLength = 11;
 
         // calculate current video duration
         double originalDuration = frames / (double)fps;
@@ -231,9 +231,8 @@ public class SlotsGameService : ISlotsGameService
                      $"-i {soundFile} " +
                      $"-filter_complex \"[0:v]tpad=stop_mode=clone:stop_duration={padSeconds}[v]\" " +
                      "-map \"[v]\" -map 1:a " +
-                     $"-t {minVideoLength} " +  // Force at least 5 seconds total
-                     "-r 30 " +
-                     "-c:v libx264 -preset fast -pix_fmt yuv420p " +
+                     $"-t {minVideoLength} " +  // force at least 11 seconds total
+                     "-r 30 -c:v libx264 -preset fast -pix_fmt yuv420p " +
                      "-c:a aac -b:a 128k " +
                      "-movflags +faststart " +
                      "-f mp4 " +
