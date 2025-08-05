@@ -218,11 +218,20 @@ public class SlotsGameService : ISlotsGameService
 
     private static void RunFfmpeg(string framesDir, string outputVideo, string soundFile)
     {
-        var ffArgs = $"-y -framerate 10 -i {framesDir}/frame_%03d.png " +
+        // animation details
+        const int fps = 10;
+        const int frames = FrameCount;
+        const int minVideoLength = 5;
+
+        // calculate current video duration
+        double originalDuration = frames / (double)fps;
+        double padSeconds = Math.Max(0, minVideoLength - originalDuration);
+
+        var ffArgs = $"-y -framerate {fps} -i {framesDir}/frame_%03d.png " +
                      $"-i {soundFile} " +
-                     "-filter_complex \"[0:v]tpad=stop_mode=clone:stop_duration=3[v]\" " + // Adds 3s extra hold
+                     $"-filter_complex \"[0:v]tpad=stop_mode=clone:stop_duration={padSeconds}[v]\" " +
                      "-map \"[v]\" -map 1:a " +
-                     "-shortest " +
+                     $"-t {minVideoLength} " +  // Force at least 5 seconds total
                      "-r 30 " +
                      "-c:v libx264 -preset fast -pix_fmt yuv420p " +
                      "-c:a aac -b:a 128k " +
