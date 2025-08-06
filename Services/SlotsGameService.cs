@@ -130,6 +130,9 @@ public class SlotsGameService : ISlotsGameService
             1.0m  => 1.0m,
             2.0m  => 1.2m,
             5.0m  => 1.5m,
+            10.0m => 2.0m,
+            25.0m => 3.0m,
+            50.0m => 5.0m,
             _     => 1.0m
         };
 
