@@ -30,9 +30,9 @@ namespace TeleCasino.SlotsGameService.Controllers
             if (wager <= 0)
                 return BadRequest("Wager must be greater than zero.");
 
-            var allowedWagers = new[] { 0.05m, 0.10m, 0.50m, 1.0m, 2.0m, 5.0m };
+            var allowedWagers = new[] { 0.05m, 0.10m, 0.50m, 1.0m, 2.0m, 5.0m, 10m, 25m, 50m };
             if (!allowedWagers.Contains(wager))
-                return BadRequest("Invalid wager amount. Allowed: 0.05, 0.10, 0.50, 1.0, 2.0, 5.0");
+                return BadRequest("Invalid wager amount. Allowed: 0.05, 0.10, 0.50, 1.0, 2.0, 5.0, 10.0, 25.0, 50.0");
 
             var result = await _slotsGameService.PlayGameAsync(wager, gameSessionId);
 
